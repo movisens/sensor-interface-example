@@ -71,7 +71,7 @@ public class SensorInterfaceExample {
 						 * set participant for next measurement
 						 */
 						ParticipantInfo participantInfo = new ParticipantInfo();
-						participantInfo.age = 42;
+						participantInfo.age = 43;
 						sensor.setParticipantInfo(participantInfo);
 
 						/*

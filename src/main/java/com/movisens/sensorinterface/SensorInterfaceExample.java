@@ -30,7 +30,7 @@ public class SensorInterfaceExample {
 					 */
 					MeasurementStatus measurementStatus = sensor.getMeasurementStatus();
 					MeasurementInformation measurementInformation = sensor.getMeasurementInformation();
-					System.out.println("sensor detected: " + sensor.getUniqueId());
+					System.out.println("UniqueId: " + sensor.getUniqueId());
 					System.out.println("SerialNumber: " + sensor.getSerialNumber());
 					System.out.println("Battery: " + sensor.getBatteryStatus() + "%");
 					System.out.println("MeasurementStatus: " + measurementStatus);
@@ -47,7 +47,7 @@ public class SensorInterfaceExample {
 							String measurementId = "participant0001";
 
 							sensor.saveAll(path, measurementId, p -> {
-								System.out.println(p + "%");
+								System.out.println("Progress: " + p + "%");
 							});
 
 							sensor.deleteData();
@@ -69,21 +69,24 @@ public class SensorInterfaceExample {
 						sensor.setLedRed(true);
 						sensor.setLedRed(false);
 
-						/*
-						 * set participant for next measurement
-						 */
-						ParticipantInfo participantInfo = new ParticipantInfo();
-						participantInfo.age = 43;
-						sensor.setParticipantInfo(participantInfo);
+						if (measurementInformation.getRecordedDuration() == 0) {
 
-						/*
-						 * start new measurement
-						 */
-						MeasurementConfiguration measurementConfiguration = new MeasurementConfiguration();
-						measurementConfiguration.setDuration(60);
+							/*
+							 * set participant for next measurement
+							 */
+							ParticipantInfo participantInfo = new ParticipantInfo();
+							participantInfo.age = 43;
+							sensor.setParticipantInfo(participantInfo);
 
-						if (sensor.startMeasurement(measurementConfiguration)) {
-							System.out.println("Measurement started");
+							/*
+							 * start new measurement
+							 */
+							MeasurementConfiguration measurementConfiguration = new MeasurementConfiguration();
+							measurementConfiguration.setDuration(60);
+
+							if (sensor.startMeasurement(measurementConfiguration)) {
+								System.out.println("Measurement started");
+							}
 						}
 					}
 				}

@@ -15,6 +15,8 @@ public class SensorInterfaceExample {
 
 	public static void main(String[] args) throws IOException {
 
+		System.setProperty("java.util.logging.config.file", "logging.properties");
+
 		List<Sensor> sensors = ConnectorFactory.getConnector().getSensors();
 
 		for (Sensor sensor : sensors) {

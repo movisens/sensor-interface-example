@@ -18,7 +18,7 @@ repositories {
 
 dependencies {
 
-    implementation('com.movisens:sensor-interface:1.16.6')
+    implementation('com.movisens:sensor-interface:1.16.7')
     
-    implementation('com.movisens:sensor-firmware:1.16.3')
+    implementation('com.movisens:sensor-firmware:1.16.4')
 }
